@@ -1,0 +1,90 @@
+/*       ATIVIDADE        */
+#include <iostream>
+
+// Stack ou Pilha
+// Altere somente os campos marcados com TODO
+struct Stack {
+    int size;  // Quantidade de elementos da pilha
+    int capacity;  // Quantidade máxima de elementos permitidos dentro da pilha
+    int *Arr; // Ponteiro para array de elementos onde salvamos as informacoes do usuario
+
+    Stack(int capacity){
+        size = 0;
+        this->capacity = capacity;
+        Arr = new int[capacity];
+    }
+
+    ~Stack(){
+        delete[] Arr;
+    }
+
+
+    // Adiciona um elemento no topo da pilha
+    // info: informacao do elemento a ser inserido
+    void push(int info){
+        if (!full()){
+            Arr[size] = info; // Adiciona o elemento no topo da pilha
+            size++; // Incrementa
+        }
+        // TODO
+    }
+
+
+    // Remove um elemento do topo da pilha.
+    // Nao faz nada caso a pilha esteja vazia.
+    void pop(){
+        if (!empty()){
+            size--; // Decrementa
+        }
+        // TODO
+    }
+
+
+    // Retorna a informacao do elemento no topo da pilha.
+    // Retorna -1, caso a pilha esteja vazia.
+    int peek(){
+        if (!empty()){
+            return Arr[size-1]; // Retorna o elemento no topo da pilha
+        }
+            return -1; // Retorna -1 se a pilha estiver vazia
+        // TODO
+    }
+
+
+    // Remove todos os elementos da pilha
+    void clear(){
+        size = 0; // Zera o tamanho da pilha
+        // TODO
+    }
+
+
+    // Devolve true se cheia e false caso contrario (ta escrito errado?)
+    bool empty(){
+        if (size == 0){ // não precisa dos returns, o if já retorna true ou false
+            return true;
+        }
+            return false;
+        // TODO
+    }
+
+    // Devolve true se vazia e false caso contrario
+    bool full(){
+        if (size == capacity){ // não precisa dos returns, o if já retorna true ou false
+            return true; 
+        }
+            return false;
+        // TODO
+    } 
+
+    // Printa as informacoes da lista
+    void print(){
+        std::cout << "[";
+        for(int i = 0; i < size; i++){
+            std::cout << Arr[i];
+            if(i < size-1){
+                std::cout << ", ";
+            }
+        }
+        std::cout << "]" << std::endl;
+    }    
+};
